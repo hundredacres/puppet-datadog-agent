@@ -6,6 +6,11 @@
 # The host of the Datadog intake server to send agent data to
 dd_url: <%= @dd_url %>
 
+<% if @enable_apm -%>
+# Enable the trace agent.
+apm_enabled: true
+<% end -%>
+
 # If you need a proxy to connect to the Internet, provide the settings here
 <% if @proxy_host.empty? -%>
 # proxy_host:

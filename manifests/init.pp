@@ -6,6 +6,8 @@
 #   $dd_url:
 #       The host of the Datadog intake server to send agent data to.
 #       Defaults to https://app.datadoghq.com.
+#   $enable_apm:
+#       Enable trace agent, APM
 #   $host:
 #   $api_key:
 #       Your DataDog API Key. Please replace with your key value.
@@ -173,6 +175,7 @@
 #
 class datadog_agent(
   $dd_url = 'https://app.datadoghq.com',
+  $enable_apm = false,
   $host = '',
   $api_key = 'your_API_key',
   $collect_ec2_tags = false,
@@ -241,6 +244,7 @@ class datadog_agent(
 ) inherits datadog_agent::params {
 
   validate_string($dd_url)
+  validate_bool($enable_apm)
   validate_string($host)
   validate_string($api_key)
   validate_array($tags)
